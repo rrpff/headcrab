@@ -8,4 +8,8 @@ describe("scraping methods", function(){
 
 	});
 
+	describe("#scrapeAll", function(){
+
+	});
+
 });
