@@ -1,0 +1,27 @@
+{
+  "name": "headcrab",
+  "version": "0.0.0",
+  "description": "Clean and simple web scraping using CSS selectors.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "scraping",
+    "scraper",
+    "cheerio",
+    "transform",
+    "structure",
+    "selector",
+    "data"
+  ],
+  "author": "zuren",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.18.0",
+    "request": "^2.53.0"
+  },
+  "devDependencies": {
+    "chai": "^2.0.0"
+  }
+}
