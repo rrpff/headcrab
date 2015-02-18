@@ -2,7 +2,7 @@
 
 #### Latch on; devour.
 
-**Headcrab** is a web scraping library that aims to bring a modular approach to extracting structured data from webpages. It provides simple but useful features, such as reusable templates (called transformers), rate limiting, routing and auto paginating that take a lot of the boilerplate and hassle out of scraping.
+**Headcrab** is a web scraping toolkit for transforming webpages into structured data. It provides simple but useful features, such as reusable templates (called transformers) using CSS selectors, rate limiting, routing and auto paginating, all of which take a lot of the boilerplate and hassle out of scraping.
 
 I'm aiming to cover a lots of common patterns, so if you have any feature suggestions please do get in touch with me by filing an issue or by email.
 

@@ -1,7 +1,7 @@
 {
   "name": "headcrab",
   "version": "0.0.0",
-  "description": "Clean and simple web scraping using CSS selectors.",
+  "description": "A web scraping toolkit for transforming webpages into structured data.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
