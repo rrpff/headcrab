@@ -15,7 +15,6 @@
     "selector",
     "data"
   ],
-  "author": "zuren",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^0.18.0",
@@ -23,5 +22,9 @@
   },
   "devDependencies": {
     "chai": "^2.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "author": "Richard Foster <richard@rpf.me> (http://rpf.me/)"
 }
