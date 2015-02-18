@@ -7,9 +7,13 @@ describe("constructor", function(){
 
 	it("should work as a simple, single use scraper if an url, options hash and callback are passed", function(done){
 		headcrab("http://example.com", {
-			selector: "h1"
-		}, function(err, data){
-			data.length.should.equal(1);
+			selector: "h1",
+			limit: 1,
+			transform: function(el){
+				return el.text()
+			}
+		}, function(err, headers){
+			headers[0].should.equal("Example Domain");
 			done();
 		});
 	});
@@ -30,7 +34,6 @@ describe("constructor", function(){
 	it("should require no options, and return a default transformer if nothing is passed", function(){
 		var t = headcrab();
 		(t instanceof headcrab.Transformer).should.equal(true);
-		t.options.selector.should.equal("*");
 	});
 
 });

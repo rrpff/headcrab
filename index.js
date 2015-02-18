@@ -19,7 +19,7 @@ var headcrab = module.exports = function(){
 // Defaults are stored here so they
 // can be changed manually.
 headcrab.defaults = {
-	selector: "*",
+	selector: "body",
 	query: {},
 	transform: function(el){
 		return el;

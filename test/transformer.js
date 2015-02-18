@@ -26,8 +26,9 @@ describe("headcrab.Transformer", function(){
 	describe("options", function(){
 
 		describe("selector", function(){
-			it("should default to *", function(){
-				allResults.length.should.equal(5);
+			it("should default to 'body'", function(){
+				allResults.length.should.equal(0);
+				t.options.selector.should.equal("body");
 			});
 			it("should only transform selector matches", function(){
 				spanResults.length.should.equal(4);
@@ -35,7 +36,7 @@ describe("headcrab.Transformer", function(){
 		});
 
 		describe("limit", function(){
-			var limitResults = t.extend({
+			var limitResults = spans.extend({
 				limit: 2
 			}).parse(htmlstr);
 
@@ -46,18 +47,18 @@ describe("headcrab.Transformer", function(){
 				limitResults.length.should.equal(2);
 			});
 			it("should slice starting at the beginning", function(){
-				limitResults[0].should.equal("title");
+				limitResults[0].should.equal("1");
 			});
 		});
 
 		describe("transform", function(){
 			it("should default to a no-op, returning cheerio objects", function(){
-				var notransform = headcrab();
+				var notransform = headcrab({ selector: "span" });
 				var obj = notransform.parse(htmlstr)[0];
 				(obj instanceof cheerio).should.equal(true);
 			});
 			it("should transform each selector match", function(){
-				var res = t.parse("<span><strong>test</strong></span>");
+				var res = spans.parse("<span><strong>test</strong></span>");
 				res[0].should.equal("test");
 				res[0].should.not.equal("<strong>test</strong>");
 			});
@@ -66,10 +67,10 @@ describe("headcrab.Transformer", function(){
 		describe("keepFalsy", function(){
 			var html = "<span></span><span>test</span>";
 			it("should default to false, ignoring falsy transform values", function(){
-				t.parse(html).length.should.equal(1);
+				spans.parse(html).length.should.equal(1);
 			});
 			it("should keep falsy values if enabled", function(){
-				e = t.extend({ keepFalsy: true });
+				e = spans.extend({ keepFalsy: true });
 				e.parse(html).length.should.equal(2);
 			});
 		});
@@ -78,7 +79,7 @@ describe("headcrab.Transformer", function(){
 
 	describe("#extend", function(){
 		it("should extend a transformer, replacing any options", function(){
-			var e = t.extend({
+			var e = spans.extend({
 				transform: function(){ return "thisisabadidea"; }
 			});
 
