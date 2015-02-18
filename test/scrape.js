@@ -6,8 +6,6 @@ describe("#scrape", function(){
 
 	describe("options", function(){
 
-		// describe("")
-
 	});
 
 });
