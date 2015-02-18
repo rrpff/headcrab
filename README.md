@@ -70,15 +70,15 @@ var posts = Hacker.parse("a html string");
 
 ### Options
 
-- `selector` - String. A CSS selector. Defaults to "*".
-- `transform` - Function to use on every selector match. Should return the transformed value - eg an object of extracted data. Is passed element, index, options hash and cheerio selections. Defaults to a no-op, selection objects will be returned as they are.
-- `limit` - Integer. Maximum number of selections. Defaults to all.
-- `keepFalsy` - Boolean. If the transform function returns false, should it be kept? Defaults to false.
+- `selector` - *String*. A CSS3/CSSSelect selector. Defaults to `"*"`. See https://github.com/fb55/css-select for a list.
+- `transform` - *Function* to use on every selector match. Should return the transformed value - eg an object of extracted data. Is passed element, index, options hash and cheerio selections. Defaults to a no-op, selection objects will be returned as they are.
+- `limit` - *Integer*. Maximum number of selections. Defaults to all.
+- `keepFalsy` - *Boolean*. If the transform function returns false, should it be kept? Defaults to `false`.
 
 The following delegate to other libraries.
 
-- `query` - Object. Request options hash. 'uri' will be overwritten. See https://github.com/request/request#requestoptions-callback
-- `parsing` - Object. htmlparser2/cheerio options hash. See https://github.com/fb55/htmlparser2/wiki/Parser-options
+- `query` - *Object*. Request options hash. 'uri' will be overwritten. See https://github.com/request/request#requestoptions-callback
+- `parsing` - *Object*. htmlparser2/cheerio options hash. See https://github.com/fb55/htmlparser2/wiki/Parser-options
 
 If your transform involves any unique helper functions that don't belong anywhere else, I think it's a good convention to add them straight to the options hash. It's a nice way to kep it all together, and means helpers can be can be replaced by `extend`ing the transformer. 
 
@@ -89,7 +89,7 @@ var transformer = module.exports = headcrab({
 	transform: function(el, idx, opts){
 		return opts.doSomething(el.attr("href"));
 	},
-	doSomething: function(){
+	doSomething: function(link){
 		// return something
 	}
 });
@@ -99,7 +99,7 @@ And extending...
 
 ```js
 var extended = transformer.extend({
-	doSomething: function(){
+	doSomething: function(link){
 		// return something else
 	}
 });
