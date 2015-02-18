@@ -14,11 +14,10 @@ var headcrab = module.exports = function(){
 }
 
 // Defaults are stored here so they
-// can be changed before any transform.
+// can be changed manually.
 headcrab.defaults = {
 	selector: "*",
-	query: {},
-	helpers: {}
+	query: {}
 }
 
 // Create a new transformer, set options for transforming HTML.
