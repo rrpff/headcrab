@@ -26,5 +26,13 @@
   "directories": {
     "test": "test"
   },
-  "author": "Richard Foster <richard@rpf.me> (http://rpf.me/)"
+  "author": "Richard Foster <richard@rpf.me> (http://rpf.me/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zuren/headcrab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zuren/headcrab/issues"
+  },
+  "homepage": "https://github.com/zuren/headcrab"
 }
