@@ -16,13 +16,11 @@ Headcrab can be used in [Node][Node] or [io.js][iojs], and installed using [npm]
 $ npm install --save headcrab
 ```
 
-<!--
-If you want to use the CLI, you should save it globally.
+If you want to use the CLI, you should save it globally too.
 
 ```sh
 $ npm install -g headcrab
 ```
--->
 
 # Usage
 
@@ -287,12 +285,11 @@ headcrab("http://example.com", {
 });
 ```
 
-<!--
 # CLI
 
 Headcrab also comes bundled with a CLI.
 
-We emphasise the benefits of creating multi-use transformers. If you export a transformer from a file you can use it from the CLI, and stream out the results and JSON. For example a transformer like this...
+We emphasise the benefits of creating multi-use transformers. If you export a transformer configuration from a file you can use it from the CLI, and stream out the results as JSON. For example a transformer like this...
 
 ```js
 // example-transformer.js
@@ -311,13 +308,12 @@ module.exports = {
 ...can be used like this...
 
 ```sh
-$ headcrab http://example.com/articles -u ./example-transformer.js > ./data/articles.json
+$ headcrab http://example.com/articles -u example-transformer.js -o data/articles.json
 ```
 
-...to save some JSON like this.
+...to save some JSON like this to `data/articles.json`.
 
 ```json
-// data/articles.json
 {
 	"results": [
 		{
@@ -328,7 +324,35 @@ $ headcrab http://example.com/articles -u ./example-transformer.js > ./data/arti
 	]
 }
 ```
--->
+
+Alternatively you can pass a selector string and use the CLI without a transformer. The following will extract the innerHTML of all `p` elements on `http://example.com` and pipe out some JSON.
+
+```sh
+$ headcrab http://example.com -s "p"
+=> ["This domain is established to be used for illustrative examples in documents. You may use this domain in examples without prior coordination or asking for permission.","<a href=\"http://www.iana.org/domains/example\">More information...</a>"]
+```
+
+## CLI options
+
+You can pass one or more URLs to headcrab.
+
+```sh
+$ headcrab http://reddit.com/r/programming http://reddit.com/r/web_design -u redditor.js -i 10000
+```
+
+Either a selector `-s {str}` or a transformer `-u {path}` is required.
+
+- `-s` / `--selector` - **String**. A selector string to use. Will take the innerHTML of each match. Alternatively use a transformer.
+- `-u`/ `--use` - **String**. Relative path to a transformer to use. If the file exports an object it will be wrapped in a headcrab transformer object. Alternatively use a selector.
+- `-o` / `--output` - **String**. Relative path to output the JSON result to. Defaults to piping to stdout.
+- `-p` / `--pretty` - **Boolean** or **Number**. Use the `p` flag to prettify the JSON result. When true, it will use 4 spaces. You can pass a number to change this, eg `-p 2` will use 2 spaces. Defaults to false.
+
+You can pass a subset of options to the scrape operation. See [the #scrape options](#scrape-options) for more information.
+
+- `-i` / `--interval` - **Number**. Milliseconds to wait between scrapes. Defaults to 0.
+- `-m` / `--merge` - **Boolean**. Should the result arrays be merged? Defaults to false.
+- `-l` / `--limit` - **Number**. Limit the number of URLs passed which should be scraped. Useful when scraping programmatically. Defaults to all URLs.
+
 
 # Credits + License
 It's [MIT][license] licensed so you can do what you like with it. Public attribution is nice too. Don't use it for anything evil.

@@ -17,8 +17,10 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "chalk": "^0.5.1",
     "cheerio": "^0.18.0",
-    "request": "^2.53.0"
+    "request": "^2.53.0",
+    "yargs": "^3.1.0"
   },
   "devDependencies": {
     "chai": "^2.0.0"
@@ -34,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/zuren/headcrab/issues"
   },
-  "homepage": "https://github.com/zuren/headcrab"
+  "homepage": "https://github.com/zuren/headcrab",
+  "bin": {
+    "headcrab": "cli.js"
+  }
 }
