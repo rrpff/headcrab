@@ -62,6 +62,20 @@ describe("headcrab.Transformer", function(){
 				res[0].should.equal("test");
 				res[0].should.not.equal("<strong>test</strong>");
 			});
+			it("should have the element, index, options hash and cheerio object passed to it", function(){
+				var trans = headcrab({
+					selector: "h1",
+					transform: function(el, idx, opts, $){
+						(el instanceof cheerio).should.equal(true);
+						idx.should.equal(0);
+						opts.should.be.an("object");
+						($ instanceof cheerio).should.equal(true);
+						$.each.should.be.a("function");
+					}
+				});
+
+				trans.parse(htmlstr);
+			});
 		});
 
 		describe("keepFalsy", function(){
@@ -83,6 +97,7 @@ describe("headcrab.Transformer", function(){
 				transform: function(){ return "thisisabadidea"; }
 			});
 
+			e.options.selector.should.equal("span");
 			e.parse("<span></span>")[0].should.equal("thisisabadidea");
 		});
 	});

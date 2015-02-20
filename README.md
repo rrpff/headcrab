@@ -117,7 +117,6 @@ transformer.scrape(["example.com", "something.else"], {
 - `each(data, url, idx)` - **Function**. Function to be called after each page is scraped. Passed the data for that page, the page url and index. Defaults to `null`.
 - `merge` - **Boolean**. When multiple URLs are passed, the result will be an array of all those results. This flattens this array a layer, so all the results are together. It will do another `sort` as well if it's defined on the transformer. Defaults to `false`.
 - `limit` - **Integer**. Number of URLs in array to scrape, starting from the first. Useful when URLs are entered procedurally. Defaults to all.
-- `query` - **Object**. Request options hash. 'url' will be overwritten. See https://github.com/request/request#requestoptions-callback
 
 ### #parse(html)
 
@@ -246,6 +245,10 @@ var Titles = headcrab({
 - `limit` - **Integer**. Maximum number of selections. Defaults to all.
 - `keepFalsy` - **Boolean**. If the transform function returns a falsy value, should it be kept? Defaults to `false`.
 - `sort(a, b)` - **Function**. A sorting function which delegates to Array#sort. Will be passed two transformed results. Defaults to order processed.
+
+The following delegate to third party libraries.
+
+- `query` - **Object**. Request options hash. 'url' will be overwritten. See https://github.com/request/request#requestoptions-callback
 - `cheerio` - **Object**. htmlparser2/cheerio options hash. See https://github.com/fb55/htmlparser2/wiki/Parser-options
 
 ### May I suggest...

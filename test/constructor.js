@@ -36,4 +36,9 @@ describe("constructor", function(){
 		(t instanceof headcrab.Transformer).should.equal(true);
 	});
 
+	it("should be able to be initiated directly - new headcrab.Transformer(options)", function(){
+		var t = new headcrab.Transformer();
+		t.parse.should.be.a("function");
+	});
+
 });
