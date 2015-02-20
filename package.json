@@ -38,6 +38,6 @@
   },
   "homepage": "https://github.com/zuren/headcrab",
   "bin": {
-    "headcrab": "cli.js"
+    "headcrab": "bin/cli.js"
   }
 }
