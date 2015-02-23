@@ -1,5 +1,7 @@
 # headcrab
 
+[![Join the chat at https://gitter.im/zuren/headcrab](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zuren/headcrab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 #### Latch on; devour.
 
 **Headcrab** is a web scraping toolkit for transforming webpages into structured data. It provides simple but useful features, such as reusable templates (called transformers) using CSS selectors, rate limiting, routing and auto paginating, all of which take a lot of the boilerplate and hassle out of scraping.
